@@ -1,4 +1,4 @@
-namespace codename02112025
+namespace codename07112025
 {
     internal class Program
     {
@@ -15,13 +15,17 @@ namespace codename02112025
 
                     while (isRepeated)
                     {
-                        random = Random.Shared.Next(50);
+                        random = Random.Shared.Next(25);
                         isRepeated = false;
 
                         for (int a = 0; a < x.GetLength(0); a++)
                         {
                             for (int b = 0; b < x.GetLength(1); b++)
                             {
+                                if (i == a && j == b)
+                                {
+                                    break;
+                                }
                                 if (x[a, b] == random)
                                 {
                                     isRepeated = true;
@@ -30,7 +34,6 @@ namespace codename02112025
                             }
                         }
                     }
-
                     x[i, j] = random;
                     Console.Write($"x[{i},{j}] = {x[i, j]}");
                     Console.WriteLine();
