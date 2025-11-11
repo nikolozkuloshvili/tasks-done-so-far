@@ -1,0 +1,165 @@
+namespace 11112025
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            Random random = new Random();
+
+            int xSize = random.Next(2, 5);
+            int ySize = random.Next(2, 5);
+
+            Console.WriteLine($"x Array Size = {xSize * xSize}");
+            Console.WriteLine($"y Array Size = {ySize * ySize}");
+            Console.WriteLine();
+
+            int[,] x = new int[xSize, xSize];
+            int[,] y = new int[ySize, ySize];
+
+            for (int i = 0; i < x.GetLength(0); i++)
+            {
+                for (int j = 0; j < x.GetLength(1); j++)
+                {
+                    x[i, j] = random.Next(1, 100);
+                    Console.WriteLine($"x[{i},{j}] = {x[i, j]}");
+                }
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < y.GetLength(0); i++)
+            {
+                for (int j = 0; j < y.GetLength(1); j++)
+                {
+                    y[i, j] = random.Next(1, 100);
+                    Console.WriteLine($"y[{i},{j}] = {y[i, j]}");
+                }
+            }
+
+            (int sum, double average) xStats = GetSumAndAverage(x);
+            (int sum, double average) yStats = GetSumAndAverage(y);
+
+            Console.WriteLine();
+            Console.WriteLine($"Sum of x array: {xStats.sum}");
+            Console.WriteLine($"Sum of y array: {yStats.sum}");
+            Console.WriteLine($"Total sum: {xStats.sum + yStats.sum}");
+            Console.WriteLine($"Average of x: {xStats.average}");
+            Console.WriteLine($"Average of y: {yStats.average}");
+            Console.WriteLine($"Max of x: {GetMax(x)}");
+            Console.WriteLine($"Max of y: {GetMax(y)}");
+            Console.WriteLine($"Min of x: {GetMin(x)}");
+            Console.WriteLine($"Min of y: {GetMin(y)}");
+
+            GetEven(x);
+            GetEven(y);
+            GetOdd(x);
+            GetOdd(y);
+        }
+
+        static (int sum, double average) GetSumAndAverage(int[,] array)
+        {
+            int sum = 0;
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    sum += array[i, j];
+                }
+            }
+            double average = (double)sum / (array.GetLength(0) * array.GetLength(1));
+            return (sum, average);
+        }
+
+        static int GetMax(int[,] array)
+        {
+            int max = int.MinValue;
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] > max)
+                    {
+                        max = array[i, j];
+                    }
+                }
+            }
+            return max;
+        }
+
+        static int GetMin(int[,] array)
+        {
+            int min = int.MaxValue;
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] < min)
+                    {
+                        min = array[i, j];
+                    }
+                }
+            }
+            return min;
+        }
+
+        static void GetEven(int[,] array)
+        {
+            int even_sum = 0;
+            int even_max = int.MinValue;
+            int even_min = int.MaxValue;
+            int even_count = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] % 2 == 0)
+                    {
+                        even_sum += array[i, j];
+                        if (array[i, j] > even_max)
+                        {
+                            even_max = array[i, j];
+                        }
+                        if (array[i, j] < even_min)
+                        {
+                            even_min = array[i, j];
+                        }
+                        even_count++;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Even count: {even_count}, Even sum: {even_sum}, Max: {even_max}, Min: {even_min}");
+        }
+
+        static void GetOdd(int[,] array)
+        {
+            int odd_sum = 0;
+            int odd_max = int.MinValue;
+            int odd_min = int.MaxValue;
+            int odd_count = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] % 2 != 0)
+                    {
+                        odd_sum += array[i, j];
+                        if (array[i, j] > odd_max)
+                        {
+                            odd_max = array[i, j];
+                        }
+                        if (array[i, j] < odd_min)
+                        {
+                            odd_min = array[i, j];
+                        }
+                        odd_count++;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Odd count: {odd_count}, Odd sum: {odd_sum}, Max: {odd_max}, Min: {odd_min}");
+        }
+    }
+}
