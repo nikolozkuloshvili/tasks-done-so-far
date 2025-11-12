@@ -14,17 +14,19 @@ namespace codename12112025
         {
             int firstNum = 0;
             int secondNum = 1;
-            int nextNum = firstNum + secondNum;
-
+            
             Console.WriteLine(firstNum);
-            Console.WriteLine(secondNum);
+            if (upperBound > 1)
+                Console.WriteLine(secondNum);
+
+            int nextNum = firstNum + secondNum;
 
             while (nextNum < upperBound)
             {
                 Console.WriteLine(nextNum);
-                nextNum = firstNum + secondNum;
                 firstNum = secondNum;
                 secondNum = nextNum;
+                nextNum = firstNum + secondNum;
             }
         }
     }
