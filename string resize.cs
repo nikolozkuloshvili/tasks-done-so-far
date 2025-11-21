@@ -28,6 +28,10 @@ namespace G10_20251121
             {
                 newArray[i] = array[i];
             }
+            for (int i = array.Length; i < newSize; i++)
+            {
+                newArray[i] = "No name found";
+            }
 
             array = newArray;
         }
