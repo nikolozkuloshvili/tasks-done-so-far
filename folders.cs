@@ -7,8 +7,6 @@ namespace G10_20251121
             string path;
             while (true)
             {
-                //es nawili cota davgugle, cota foe foe mindoda yofiliyo ☻ .
-
                 Console.WriteLine("Choose a folder path:");
                 Console.WriteLine("1 - F:\\1");
                 Console.WriteLine("2 - C:\\Program Files");
@@ -26,7 +24,9 @@ namespace G10_20251121
                     continue;
                 }
 
-                if (Directory.Exists(path))
+                if (Directory.Exists(path))              
+                    //es nawili cota davgugle, cota foe foe mindoda yofiliyo ☻ .
+                    //am existis gareshe prosta kitxvas imeorebda usasrulod.
                     break;
                 else
                     Console.WriteLine("The selected path does not exist. Try again.");
