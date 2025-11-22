@@ -4,7 +4,34 @@ namespace G10_20251121
     {
         static void Main()
         {
-            const string path = @"F:\1";
+            string path;
+            while (true)
+            {
+                //es nawili cota davgugle, cota foe foe mindoda yofiliyo ☻ .
+
+                Console.WriteLine("Choose a folder path:");
+                Console.WriteLine("1 - F:\\1");
+                Console.WriteLine("2 - C:\\Program Files");
+                Console.Write("Enter 1 or 2: ");
+
+                string choice = Console.ReadLine();
+
+                if (choice == "1")
+                    path = @"F:\1";
+                else if (choice == "2")
+                    path = @"C:\Program Files";
+                else
+                {
+                    Console.WriteLine("Invalid choice. Try again.");
+                    continue;
+                }
+
+                if (Directory.Exists(path))
+                    break;
+                else
+                    Console.WriteLine("The selected path does not exist. Try again.");
+            }
+
             PrintDirectories(path);
         }
 
