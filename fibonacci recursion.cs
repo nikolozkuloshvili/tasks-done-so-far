@@ -5,7 +5,6 @@ namespace codename_26112025
         static void Main()
         {
             Console.Write("Enter a fibonacci number : ");
-
             int enteredFibNum = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i <= enteredFibNum; i++)
@@ -18,7 +17,6 @@ namespace codename_26112025
                 }
                 Console.WriteLine(GetFibonacci(i));
             }
-
         }
 
         static int GetFibonacci(int enteredFibNum)
