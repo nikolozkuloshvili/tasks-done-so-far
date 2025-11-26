@@ -10,8 +10,8 @@ namespace codename_27112025
 
             Console.WriteLine($"Here are the {newLength} names as you requested: ");
 
-            string[] array = { "nikoloz", "giorgi", "tamta", "david", "ana", "luka", "saba", "nino", "elene" };
-
+            string[] array = { "Nikoloz", "Giorgi", "Tamta", "David", "Ana", "Luka", "Saba", "Nino", "Elene" };
+            
             Resize(ref array, newLength);
 
             for (int i = 0; i < array.Length; i++)
