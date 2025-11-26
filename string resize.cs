@@ -23,12 +23,12 @@ namespace G10_20251121
         static void Resize(ref string[] array, int newLength)
         {
             string[] newArray = new string[newLength];
-            int Length = array.Length < newLength ? array.Length : newLength;
+            int length = array.Length < newLength ? array.Length : newLength;
             if (array.Length == newLength)
             {
                 return;
             }
-            for (int i = 0; i < array.Length && i < newLength; i++)
+            for (int i = 0; i < length; i++)
             {
                 newArray[i] = array[i];
             }
