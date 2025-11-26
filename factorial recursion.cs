@@ -20,18 +20,18 @@ namespace G10_20251121
                 return;
             }
 
-            int result = writeFactorialNumbers(factorialNum);
+            int result = writeFactorial(factorialNum);
 
             Console.WriteLine($"The factorial of {factorialNum} is: {result} ");;
 
         }
-        static int writeFactorialNumbers(int factorialNum)
+        static int writeFactorial(int factorialNum)
         {
             if (factorialNum == 1)
             {           
                 return 1;
             }
-            return factorialNum * writeFactorialNumbers(factorialNum - 1);
+            return factorialNum * writeFactorial(factorialNum - 1);
         }
     }
 }
