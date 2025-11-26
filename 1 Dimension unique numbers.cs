@@ -17,6 +17,8 @@
                         i--;
                         break;
                     }
+                    //also can do  x[i] = Random.Shared.Next(15);
+                    // i = -1;
                 }
             }
 
@@ -27,3 +29,4 @@
         }
     }
 }
+
