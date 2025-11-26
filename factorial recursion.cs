@@ -1,5 +1,4 @@
-namespace G10_20251121
-{
+namespace codename_26112025
     internal class Program
     {
         static void Main()
