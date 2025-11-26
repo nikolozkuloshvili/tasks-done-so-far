@@ -1,4 +1,4 @@
-namespace G10_20251121
+namespace codename_20251121
 {
     internal class Program
     {
@@ -10,7 +10,7 @@ namespace G10_20251121
 
             Console.WriteLine($"Here are the {newLength} names as you requested: ");
 
-            string[] array = { "nikoloz", "giorgi", "tamta", "david", "ana", "luka", "saba", "nino", "elene" };
+            string[] array = { "Nikoloz", "Giorgi", "Tamta", "David", "Ana", "Luka", "Saba", "Nino", "Elene" };
 
             Resize(ref array, newLength);
 
