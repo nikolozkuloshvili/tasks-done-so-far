@@ -31,18 +31,18 @@ namespace codename_27112025
 
             if (newLength > array.Length)
             {
-                int expand = newLength - array.Length;
+                int expandNum = newLength - array.Length;
                 for (int i = 0; i < array.Length; i++)
                 {
-                    newArray[i + expand] = array[i];
+                    newArray[i + expandNum] = array[i];
                 }
             }
             else if (newLength < array.Length)
             {
-                int cut = array.Length - newLength;
+                int cutNum = array.Length - newLength;
                 for (int i = 0; i < newLength; i++)
                 {
-                    newArray[i] = array[cut + i];
+                    newArray[i] = array[cutNum + i];
                 }
             }
             array = newArray;
