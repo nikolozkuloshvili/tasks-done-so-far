@@ -1,68 +1,48 @@
-namespace G10_20251121
+namespace FoldersFolders_onceagain_Folders
 {
     internal class Program
     {
         static void Main()
         {
-            string path;
-            while (true)
-            {
-                Console.WriteLine("Choose a folder path:");
-                Console.WriteLine("1 - F:\\1");
-                Console.WriteLine("2 - C:\\Program Files");
-                Console.Write("Enter 1 or 2: ");
-
-                string choice = Console.ReadLine();
-
-                if (choice == "1")
-                    path = @"F:\1";
-                else if (choice == "2")
-                    path = @"C:\Program Files";
-                else
-                {
-                    Console.WriteLine("Invalid choice. Try again.");
-                    continue;
-                }
-
-                if (Directory.Exists(path))              
-                    //es nawili cota davgugle, cota foe foe mindoda yofiliyo ☻ .
-                    //am existis gareshe prosta kitxvas imeorebda usasrulod.
-                    break;
-                else
-                    Console.WriteLine("The selected path does not exist. Try again.");
-            }
-
+            const string path = @"f:\1";
             PrintDirectories(path);
+
         }
 
         static void PrintDirectories(string path)
         {
-            string[] currentLevel = new string[] { path };
+            string[] StartPoint = new string[] { path };
 
-            while (currentLevel.Length > 0)
+            while (StartPoint.Length > 0)
             {
-                int totalSubFolders = 0;
-                foreach (string folder in currentLevel)
+                int insideFolderAmount = 0;
+                foreach (string folder in StartPoint)
                 {
-                    string[] subDirs = Directory.GetDirectories(folder);
-                    totalSubFolders += subDirs.Length;
+                    string[] insideFolders = Directory.GetDirectories(folder);
+                    insideFolderAmount += insideFolders.Length;
                 }
 
-                string[] nextLevel = new string[totalSubFolders];
-                int index = 0;
+                string[] nextPoint = new string[insideFolderAmount];
+                int j = 0;
 
-                foreach (string folder in currentLevel)
+                foreach (string folder in StartPoint)
                 {
                     Console.WriteLine(folder);
 
-                    string[] subDirs = Directory.GetDirectories(folder);
-                    for (int i = 0; i < subDirs.Length; i++)
+                    if (insideFolderAmount == 0)
                     {
-                        nextLevel[index++] = subDirs[i];
+                        return;
+                    }
+
+                    string[] insideFolders = Directory.GetDirectories(folder);
+
+                    for (int i = 0; i < insideFolders.Length; i++, j++)
+                    {
+                        nextPoint[j] = insideFolders[i];
                     }
                 }
 
-                currentLevel = nextLevel;
+                StartPoint = nextPoint;
             }
         }
     }
