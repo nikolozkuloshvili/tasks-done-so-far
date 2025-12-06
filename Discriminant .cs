@@ -86,7 +86,7 @@ class Discriminant
 
     public double CalculateDisc()
     {
-        D = (B * B) - (4 * A * C);
+        D = Math.Pow(B, 2) - (4 * A * C);
         return D;
     }
 
