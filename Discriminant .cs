@@ -33,6 +33,7 @@ namespace CodeName06122025
                 }
             }
         }
+        
         static double InputNumbers(string text)
         {
             double number;
@@ -49,6 +50,7 @@ namespace CodeName06122025
                 }
             }
         }
+        
         class Discriminant
         {
             private double _a;
@@ -80,7 +82,7 @@ namespace CodeName06122025
                     }
                 }
             }
-
+            
             public double B { get; set; }
             public double C { get; set; }
             public double D { get; set; }
