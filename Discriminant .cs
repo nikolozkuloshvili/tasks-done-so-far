@@ -6,11 +6,11 @@ namespace CodeName06122025
         {
             Discriminant disc = new Discriminant();
 
-            disc.A = disc.GetNumA("a = ");
+            disc.A = InputNumbers("a = ");
 
-            disc.B = disc.GetNumbers("b = ");
+            disc.B = InputNumbers("b = ");
 
-            disc.C = disc.GetNumbers("c = ");
+            disc.C = InputNumbers("c = ");
 
             disc.CalculateDisc();
             Console.WriteLine($"D = {disc.D}");
@@ -33,81 +33,89 @@ namespace CodeName06122025
                 }
             }
         }
-    }
-}
-class Discriminant
-{
-    public double A { get; set; }
-    public double B { get; set; }
-    public double C { get; set; }
-    public double D { get; set; }
-    public double? X1 { get; set; }
-    public double? X2 { get; set; }
-
-    public double GetNumbers(string text)
-    {
-        double number;
-        while (true)
+        static double InputNumbers(string text)
         {
-            Console.Write(text);
-            if (double.TryParse(Console.ReadLine(), out number))
+            double number;
+            while (true)
             {
-                return number;
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-            }
-        }
-    }
-    public double GetNumA(string text)
-    {
-        double number;
-        while (true)
-        {
-            Console.Write(text);
-            if (double.TryParse(Console.ReadLine(), out number))
-            {
-                if (number == 0)
-                {
-                    Console.WriteLine("If you put 0 the equation won't be quadratic anymore. Please try again with a non-zero number.");
-                }
-                else
+                Console.Write(text);
+                if (double.TryParse(Console.ReadLine(), out number))
                 {
                     return number;
                 }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
             }
-            else
+        }
+        class Discriminant
+        {
+            private double _a;
+            public double A
             {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
+                get
+                {
+                    return _a;
+                }
+                set
+                {
+                    string text = ("a = ");
+                    Console.WriteLine("If you put 0 the equation won't be quadratic anymore. Please try again with a non-zero number.");
+
+                    while (true)
+                    {
+                        Console.Write(text);
+                        if (double.TryParse(Console.ReadLine(), out _a))
+                        {
+                            if (value == 0)
+                            {
+                                Console.WriteLine("If you put 0 the equation won't be quadratic anymore. Please try again with a non-zero number.");
+                            }
+                            else
+                            {
+                                _a = value;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter a valid number.");
+                        }
+                    }
+                }
             }
-        }
-    }
 
-    public double CalculateDisc()
-    {
-        D = Math.Pow(B, 2) - (4 * A * C);
-        return D;
-    }
+            public double B { get; set; }
+            public double C { get; set; }
+            public double D { get; set; }
+            public double? X1 { get; set; }
+            public double? X2 { get; set; }
 
-    public bool GetRoots()
-    {
+            public double CalculateDisc()
+            {
+                D = Math.Pow(B, 2) - (4 * A * C);
+                return D;
+            }
 
-        if (D > 0)
-        {
-            X1 = (-B - Math.Sqrt(D)) / (2 * A);
-            X2 = (-B + Math.Sqrt(D)) / (2 * A);
-            return true;
-        }
-        else if (D == 0)
-        {
-            X1 = X2 = -B / (2 * A);
-            return true;
-        }
-        else
-        {
-            X1 = X2 = null;
-            return false;
+            public bool GetRoots()
+            {
+                if (D > 0)
+                {
+                    X1 = (-B - Math.Sqrt(D)) / (2 * A);
+                    X2 = (-B + Math.Sqrt(D)) / (2 * A);
+                    return true;
+                }
+                else if (D == 0)
+                {
+                    X1 = X2 = -B / (2 * A);
+                    return true;
+                }
+                else
+                {
+                    X1 = X2 = null;
+                    return false;
+                }
+            }
         }
     }
 }
