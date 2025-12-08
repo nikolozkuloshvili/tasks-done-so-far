@@ -60,27 +60,23 @@ namespace CodeName06122025
                 }
                 set
                 {
-                    string text = ("a = ");
-                    Console.WriteLine("If you put 0 the equation won't be quadratic anymore. Please try again with a non-zero number.");
-
-                    while (true)
+                    if (value == 0)
                     {
-                        Console.Write(text);
-                        if (double.TryParse(Console.ReadLine(), out _a))
+                        Console.WriteLine("If you put 0 the equation won't be quadratic anymore. Please try again with a non-zero number.");
+                        while (true)
                         {
-                            if (value == 0)
+                            Console.Write("a = ");
+                            if (double.TryParse(Console.ReadLine(), out double number) && number != 0)
                             {
-                                Console.WriteLine("If you put 0 the equation won't be quadratic anymore. Please try again with a non-zero number.");
+                                _a = number;
+                                break;
                             }
-                            else
-                            {
-                                _a = value;
-                            }
+                            Console.WriteLine("Invalid input. Please enter a valid non-zero number.");
                         }
-                        else
-                        {
-                            Console.WriteLine("Invalid input. Please enter a valid number.");
-                        }
+                    }
+                    else
+                    {
+                        _a = value;
                     }
                 }
             }
